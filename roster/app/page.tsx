@@ -1,13 +1,15 @@
 import Image from 'next/image'
+import RosterEdit from './components/rosterEdit'
+import RosterPreview from './components/rosterPreview'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Roster
-      <div className='test'>
-        <label>Choose a time for your meeting:</label>
+    <main className="flex flex-col items-center justify-between p-24">
+      <RosterPreview />
 
-        <input type="time" id="appt" name="appt" min="00:00" max="24:00" required />
+      <div className='test text-red-700'>
+        <RosterEdit />
+
       </div>
     </main>
   )
