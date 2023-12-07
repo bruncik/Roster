@@ -1,4 +1,9 @@
+import ContextX from "./contextX"
+import { useContext } from "react"
+
 export default function RosterTable() {
+    const { hours } = useContext(ContextX);
+
     return (
         <div>
             <table className="table-auto">
@@ -16,7 +21,7 @@ export default function RosterTable() {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{ }</td>
+                        <td>{hours}</td>
                         <td>{ }</td>
                         <td>{ }</td>
                         <td>{ }</td>
