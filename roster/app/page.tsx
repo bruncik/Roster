@@ -3,7 +3,8 @@ import Image from 'next/image'
 import RosterEdit from './components/rosterEdit'
 import RosterPreview from './components/rosterPreview'
 import { XProvider } from './components/contextX'
-import TotalHours from './components/totalHours'
+import BasicCalculator from './basicCalculator'
+
 
 
 export default function Home() {
@@ -12,13 +13,7 @@ export default function Home() {
     <main className="flex flex-col  justify-center p-2">
 
       <XProvider>
-        <div className='test text-red-700 flex justify-center'>
-          <RosterEdit />
-          <TotalHours />
-        </div>
-        <div>
-          <RosterPreview />
-        </div>
+        <BasicCalculator />
       </XProvider>
 
     </main >
