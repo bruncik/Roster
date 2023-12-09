@@ -1,8 +1,9 @@
 import ContextX from "./contextX"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 export default function RosterTable() {
-    const { hours } = useContext(ContextX);
+    const { hours, shiftStart, shiftEnd } = useContext(ContextX);
+    const [value, setValue] = useState([]);
 
     return (
         <div>
@@ -21,7 +22,7 @@ export default function RosterTable() {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{hours}</td>
+                        <td>Starting:{shiftStart} ending:{shiftEnd} Total:{hours}</td>
                         <td>{ }</td>
                         <td>{ }</td>
                         <td>{ }</td>

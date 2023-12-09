@@ -14,7 +14,7 @@ export default function Day() {
 
     return (
 
-        <div className="bg-green-200">
+        <div className="bg-green-100">
 
             {oneShift}
             <button className="text text-blue-600 bg-orange-400 m-10"
