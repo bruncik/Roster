@@ -1,9 +1,9 @@
 "use client"
-import Image from 'next/image'
-import RosterEdit from './components/rosterEdit'
-import RosterPreview from './components/rosterPreview'
+
 import { XProvider } from './components/contextX'
-import BasicCalculator from './basicCalculator'
+import BasicCalculator from './components/basicCalculator'
+import Testing from './components/testing'
+import Timetable from './components/timetable'
 
 
 
@@ -15,6 +15,11 @@ export default function Home() {
       <XProvider>
         <BasicCalculator />
       </XProvider>
+
+      <div className='text-black bg-green-100'>
+
+        <Timetable />
+      </div>
 
     </main >
   )
