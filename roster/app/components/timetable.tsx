@@ -22,107 +22,68 @@ export default function Timetable() {
     };
 
     return (
-        <div className='flex flex-col'>
-            <div className='flex justify-around '>
-                <div>Total hours:</div>
-                <div>Monday</div>
-                <div>Monday</div>
-                <div>Monday</div>
-                <div>Monday</div>
-                <div>Monday</div>
-                <div>Monday</div>
-                <div>Monday</div>
+        <div>
+            <div className=' '>
+
+
+                <div className='flex'>       { /*main container */}
+
+                    <div className='bg-red-100'>
+                        <div>Name</div>
+                        {data.map((row, index) => (
+                            <div key={index}>
+                                <input className='text-xs'
+                                    type="text"
+                                    value={row.name}
+                                    onChange={(event) =>
+                                        handleEdit(index, 'name', event.target.value)
+                                    }
+                                />
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className='flex flex-col'>
+                        <div>Monday</div>
+                        <div className='flex'>
+                            <div className='bg-blue-100 '>
+                                <div>Start</div>
+                                {data.map((row, index) => (
+                                    <div key={index}>
+                                        <NewShiftInput
+                                            isStart={true}
+                                            value={row.sMonday}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className='bg-blue-100 '>
+                                <div>End</div>
+                                {data.map((row, index) => (
+                                    <div key={index}>
+                                        <NewShiftInput isStart={false}
+                                            value={row.eMonday}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <button onClick={handleAdd}>Add Row</button>
             </div>
 
-            <div className='flex justify-around'>       { /*main container */}
-
-                <div className='bg-red-100'>
-                    <div>Name</div>
-                    {data.map((row, index) => (
-                        <div key={index}>
-                            <input className='text-xs'
-                                type="text"
-                                value={row.name}
-                                onChange={(event) =>
-                                    handleEdit(index, 'name', event.target.value)
-                                }
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                <div className='bg-blue-100 '>
-                    <div>Start</div>
-                    {data.map((row, index) => (
-                        <div key={index}>
-                            <NewShiftInput
-                                isStart={true}
-                                value={row.sMonday}
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                <div className='bg-blue-100 '>
-                    <div>End</div>
-                    {data.map((row, index) => (
-                        <div key={index}>
-                            <NewShiftInput isStart={false}
-                                value={row.eMonday}
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                <div className='bg-blue-100 '>
-                    <div>Start</div>
-                    {data.map((row, index) => (
-                        <div key={index}>
-                            <NewShiftInput isStart={true}
-                                value={row.sMonday}
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                <div className='bg-blue-100 '>
-                    <div>End</div>
-                    {data.map((row, index) => (
-                        <div key={index}>
-                            <NewShiftInput isStart={false}
-                                value={row.eMonday}
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                <div className='bg-blue-100 '>
-                    <div>Start</div>
-                    {data.map((row, index) => (
-                        <div key={index}>
-                            <NewShiftInput isStart={true}
-                                value={row.sMonday}
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                <div className='bg-blue-100 '>
-                    <div>End</div>
-                    {data.map((row, index) => (
-                        <div key={index}>
-                            <NewShiftInput isStart={false}
-                                value={row.eMonday}
-                            />
-                        </div>
-                    ))}
-                </div>
 
 
 
-            </div>
-
-            <button onClick={handleAdd}>Add Row</button>
         </div>
     );
 }

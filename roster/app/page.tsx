@@ -4,6 +4,7 @@ import { XProvider } from './components/contextX'
 import BasicCalculator from './components/basicCalculator'
 import Testing from './components/testing'
 import Timetable from './components/timetable'
+import SpreadSheet from './components/spreadSheet'
 
 
 
@@ -18,7 +19,7 @@ export default function Home() {
 
       <div className='text-black bg-green-100'>
 
-        <Timetable />
+        <SpreadSheet />
       </div>
 
     </main >
