@@ -1,11 +1,12 @@
 export default function extractTime(str) {
 
-    if (str == '') {
-        return ['0:00', '0:00', '0:00', '0:00'];
+    if (str === '.') {
+        return ['00', '00', '00', '00']
     }
 
-    let start = str.split(' ')[0];
-    let end = str.split(' ')[2];
+    //let start = str.split(' ')[0];
+    //let end = str.split(' ')[2];
+    let [start, end] = str.split('-');
     let before, after = '';
     let beforeEnd, afterEnd = '';
 
@@ -34,5 +35,5 @@ export default function extractTime(str) {
     //end = end + ':00';
 
     console.log(start, end, '----', before, after, '--', beforeEnd, afterEnd);
-    return [before, after, beforeEnd, afterEnd];
+    return [before.padStart(2, '0'), after.padStart(2, '0'), beforeEnd.padStart(2, '0'), afterEnd.padStart(2, '0')];
 }

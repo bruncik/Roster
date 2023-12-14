@@ -4,7 +4,7 @@ import { useContext, useState } from "react"
 export default function TotalHours() {
     const { durationShift } = useContext(ContextX);
 
-    const countTotalTime = (duration) => {
+    const countTotalTime = (duration) => {          // ---   mam uz samostatnu in helpers
         const hours = Math.floor(duration / (1000 * 60 * 60));
         const minutes = Math.floor((duration / (1000 * 60)) % 60);
 

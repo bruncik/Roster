@@ -1,23 +1,25 @@
 import { useState } from "react";
 import Spreadsheet from "react-spreadsheet";
 import extractTime from "../helpers/extractTime";
+import countDuration from "../helpers/countDuration";
+import durationToHours from "../helpers/durationToHours";
 
 export default function SpreadSheet() {
 
     //let row = ["Flavour", "Food"];
     const col = ["Name", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Estimated Hours"];
 
+    let rowCount = 1;   // for default row
+
     const data = [
-        [{ value: "Jaro" }, { value: "10 - F" }],
-        [{ value: "Sergio" }, { value: "" }],
-        [{ value: "Isaacs" }, { value: "" }],
-        [{ value: "Muhamad" }, { value: "" }],
+        [{ value: "." }, { value: "." }, { value: "." }, { value: "." }, { value: "." }, { value: "." }, { value: "." }, { value: "." }, { value: "." }],   //default row
+
     ];
 
     const [dataState, setDataState] = useState(data);
 
     const handleAddRow = () => {
-        const newRow = [{ value: "" }];
+        const newRow = [{ value: "" }, { value: "" }, { value: "" }, { value: "" }, { value: "" }, { value: "" }, { value: "" }, { value: "" }, { value: "" }];
         setDataState([...dataState, newRow]);
     };
 
@@ -26,11 +28,23 @@ export default function SpreadSheet() {
         setDataState(t);
     }
 
-    function onX() {
-        const [a, s, d, f] = extractTime(dataState[0][1].value);
-        let newData = [...dataState];
-        newData[0][8] = { value: d };
-        setDataState(newData);
+    function onX() {                // still removing all extra characters, and dots
+        for (let i = 0; i < rowCount; i++) {
+            let rowDuration = 0;
+            for (let j = 1; j < 8; j++) {
+                const [a1, a2, b1, b2] = extractTime(dataState[i][j].value.replaceAll(' ', ''));
+                let dur = countDuration(a1.replaceAll(' ', '') + ':' + a2.replaceAll(' ', ''), b1.replaceAll(' ', '') + ':' + b2.replaceAll(' ', ''));
+                console.log('<--------->', a1.replaceAll(' ', '') + ':' + a2.replaceAll(' ', ''), b1.replaceAll(' ', '') + ':' + b2.replaceAll(' ', ''));
+                console.log(dur);
+                rowDuration += dur;
+            }
+            let newData = [...dataState];
+            newData[i][8] = { value: durationToHours(rowDuration) };
+            setDataState(newData);
+        }
+
+
+
     }
     //onChange={(d) => { setDataState([...dataState]) }}
     return (
